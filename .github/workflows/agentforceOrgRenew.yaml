@@ -8,7 +8,7 @@ on:
 jobs:
   dev-org-renew:
     runs-on: ubuntu-latest
-    environment: agentforce
+    environment: Agentforce Dev Edition Org
     steps:
       - uses: actions/checkout@v4
         with: 
@@ -22,8 +22,7 @@ jobs:
       - name: 'Authenticate to Agentforce org'
         run: |
             echo ${{ secrets.AGENTFORCE_DEV_ORG_AUTH_URL }} > ./AGENTFORCE_DEV_ORG_AUTH_URL.txt
-            echo "Contents of AGENTFORCE_DEV_ORG_AUTH_URL.txt (masked):"
-            head -c 10 ./AGENTFORCE_DEV_ORG_AUTH_URL.txt && echo "..."
+            ls -al ./AGENTFORCE_DEV_ORG_AUTH_URL.txt
             sf org login sfdx-url -f ./AGENTFORCE_DEV_ORG_AUTH_URL.txt -a agentforce -d
       - name: 'Query data'
         run: |
